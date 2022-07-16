@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
-import Select from "react-select";
 import { useStateValue } from "../StateProvider/StateProvider";
 import {  set, child,ref as ref_database, push } from "firebase/database";
-import { auth, database,storage } from "../database/firebase.js";
+import {  database,storage } from "../database/firebase.js";
 import { useNavigate } from "react-router-dom";
-import { getStorage, uploadBytesResumable, ref as ref_storage,getDownloadURL } from "firebase/storage";
+import {  uploadBytesResumable, ref as ref_storage,getDownloadURL } from "firebase/storage";
+
 function AddProduct() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const [rating, setRating] = useState("");
+  // const [rating, setRating] = useState("");
   const [image, setImage] = useState(null);
   const [imageurl, setImageurl] = useState(null);
 
   const [category, setCategory] = useState("");
 
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{  user }, ] = useStateValue();
   const navigate = useNavigate();
 
   const addproduct = (e) => {
@@ -29,7 +29,7 @@ function AddProduct() {
     };
 
     // Get a key for a new Post.
-    if (user && user.email == "tapasadmin@gmail.com") {
+    if (user && user.email === "tapasadmin@gmail.com") {
       const newPostKey = push(child(ref_database(database), "products")).key;
       set(
         ref_database(database, "users/" + user.uid + "/products/" + newPostKey),
@@ -58,9 +58,9 @@ function AddProduct() {
     const i=event.target.files[0];
 
     // var name = "123" + Date.now();
-    const metadata = {
-      contentType: 'image/jpeg'
-    };
+    // const metadata = {
+    //   contentType: 'image/jpeg'
+    // };
     console.log(i)
     const storageRef = ref_storage(storage, "productImages/" + i.name);
     //  var storageRef=firebase.storage().ref('productImages/'+name);
@@ -79,6 +79,8 @@ function AddProduct() {
           case 'running':
             console.log('Upload is running');
             break;
+            default: console.log('Default case')
+               break;
         }
       }, 
       (error) => {

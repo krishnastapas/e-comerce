@@ -2,12 +2,12 @@ import React from "react";
 import "./Product.css";
 import { useStateValue } from "../StateProvider/StateProvider";
 import { useNavigate } from "react-router-dom";
-import {  set, child,ref as ref, push } from "firebase/database";
-import { auth, database,storage } from "../database/firebase.js";
+// import {  set, child,ref as ref, push } from "firebase/database";
+// import { auth, database,storage } from "../database/firebase.js";
 
 function Product({ id, title, image, price, category }) {
   const navigate = useNavigate();
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   console.log(title);
   console.log(id);
   const addToBasket = async () => {
@@ -46,7 +46,7 @@ function Product({ id, title, image, price, category }) {
             ))} */}
         </div>
       </div>
-      <img src={image} />
+      <img src={image} alt=""/>
       <button onClick={addToBasket}>Add to cart</button>
     </div>
   );

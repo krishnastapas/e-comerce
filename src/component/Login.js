@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { auth } from "../database/firebase.js";
 import {useNavigate} from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,13 +19,13 @@ function Login() {
       if(userCredential){
         navigate('/');
       }
-      const user = userCredential.user;
+      // const user = userCredential.user;
       // ...
     })
     .catch((error) => {
       alert(error.message)
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
     });
   };
 

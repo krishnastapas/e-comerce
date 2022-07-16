@@ -2,42 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Product from "./Product";
 import topimage from "./topimage.jpg";
-import { getDatabase, ref, onValue, get, child } from "firebase/database";
-import { auth, database } from "../database/firebase.js";
-import { Refresh } from "@mui/icons-material";
-import { async } from "@firebase/util";
+import {  ref, get, child } from "firebase/database";
+import {  database } from "../database/firebase.js";
 
 function Home() {
   const [products, setProducts] = useState("");
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const chevronWidth = 40;
+  
 
   useEffect(() => {
-    //  const fetchdata=async()=>{
-
-    //  }
+    
     get(child(ref(database), "products/")).then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
-        // console.log(snapshot.val())
-
+        // console.log(snapshot.val());
         setProducts(snapshot.val());
       }
     });
-    console.log(products);
+    // console.log(products);
   }, []);
 
   return (
     <>
-      {/* <button onClick={loadData}> Refresh </button> */}
       <div className="home">
-        {/* <button>Refresh</button> */}
         <div className="home_container">
           <img className="home_image" src={topimage} alt="" />
           <h1 className="category_heading">Electronics</h1>
           <div className="home_row">
             {Object.keys(products).map((key, index) =>
-              products[key] && products[key].category == "electronics" ? (
+              products[key] && products[key].category === "electronics" ? (
                 <Product
                   id={key}
                   title={products[key].title}
@@ -54,7 +45,7 @@ function Home() {
           <h1 className="category_heading">Books</h1>
           <div className="home_row">
             {Object.keys(products).map((key, index) =>
-              products[key] && products[key].category == "books" ? (
+              products[key] && products[key].category === "books" ? (
                 <Product
                 id={key}
                 title={products[key].title}
@@ -71,7 +62,7 @@ function Home() {
           <h1 className="category_heading">Garments</h1>
           <div className="home_row">
             {Object.keys(products).map((key, index) =>
-              products[key] && products[key].category == "garment" ? (
+              products[key] && products[key].category === "garment" ? (
                 <Product
                 id={key}
                 title={products[key].title}

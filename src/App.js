@@ -3,11 +3,10 @@ import Home from "./component/Home";
 import Header from "./component/Header";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Cart from "./component/Cart";
-import { getDatabase, ref, onValue } from "firebase/database";
 import Login from "./component/Login";
 import SignUp from "./component/SignUp";
 import {useStateValue} from "./StateProvider/StateProvider"
-import { auth, database } from "./database/firebase.js";
+import { auth} from "./database/firebase.js";
 import React, { useEffect} from "react";
 import AddProduct from "./component/AddProduct";
 
@@ -37,18 +36,6 @@ function App() {
         });
       }
     });
-//     // const userId = auth.currentUser.uid;
-//     onValue(ref(database, '/users/user.uid/cart'), (snapshot) => {
-//     const cart= (snapshot.val() && snapshot.val().username) || 'Anonymous';
-//     console.log(cart)
-//     dispatch({
-//       type: "ADD_TO_BASKET",
-//       item: cart,
-//     });
-//   // ...
-// }, {
-//   onlyOnce: true
-// }); 
 
   }, []);
   return (

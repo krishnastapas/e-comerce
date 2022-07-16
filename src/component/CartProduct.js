@@ -2,7 +2,7 @@ import React from 'react';
 import './CartProduct.css'
 import { useStateValue } from "../StateProvider/StateProvider";
 import {ref, set } from "firebase/database";
-import { auth,database } from "../database/firebase.js";
+import { database } from "../database/firebase.js";
 
 
 function CartProduct({ id, image, title, price, rating, hideButton }) {
@@ -25,7 +25,7 @@ function CartProduct({ id, image, title, price, rating, hideButton }) {
 
     return (
         <div className='checkoutProduct'>
-            <img className='checkoutProduct__image' src={image} />
+            <img className='checkoutProduct__image' src={image} alt="" />
 
             <div className='checkoutProduct__info'>
                 <p className='checkoutProduct__title'>{title}</p>

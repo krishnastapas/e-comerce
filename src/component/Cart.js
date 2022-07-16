@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import "./Cart.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../StateProvider/StateProvider";
 import CartProduct from "./CartProduct";
 
 function Checkout() {
-  const [{ basket, user }, dispatch] = useStateValue();
-  const [cart,setCart]=useState("");
+  const [{ basket, user }] = useStateValue();
+  // const [cart,setCart]=useState("");
   return (
     <div className="checkout">
       <div className="checkout__left">

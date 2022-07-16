@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth,database } from "../database/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {useNavigate} from 'react-router-dom';
@@ -35,8 +35,8 @@ function SignUp() {
     })
     .catch((error) => {
       alert(error.message)
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
       // ..
     });
   };
